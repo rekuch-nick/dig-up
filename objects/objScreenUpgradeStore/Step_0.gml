@@ -25,6 +25,8 @@ if(pc.pressedStart || pc.pressedJump){
 			
 			if(shop[cursor] == "+1 Health Box"){ pc.hpMax ++; pc.hp ++; }
 			
+			if(shop[cursor] == "+1 Bag Space"){ pc.bagMax ++; }
+			
 			if(shop[cursor] == "Random Suit"){ 
 				var old = pc.sprite_index;
 				do {
