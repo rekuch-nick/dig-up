@@ -185,4 +185,7 @@ if(yInput < 0){
 	
 }
 
+if(keyboard_check_pressed(vk_backspace)){
+	instance_create_depth(room_width/2+140, room_height-350, ww.depth+1, objBalloon);
+}
 

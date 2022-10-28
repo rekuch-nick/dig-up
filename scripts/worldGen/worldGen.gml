@@ -2,7 +2,7 @@ function worldGen(){
 	
 	worldGenPrep();
 	
-	
+	var top = 6;//86;
 	
 	for(var a=1; a<5; a++){ ww.bgmap[a, 96] = imgPlat; }
 	
@@ -17,25 +17,26 @@ function worldGen(){
 	
 	
 	
-	for(var a=0; a<17; a++){ for(var b=0; b<88; b++){
+	for(var a=0; a<17; a++){ for(var b=top; b<88; b++){
 		if(irandom_range(0, 1) == 1){ ww.bmap[a, b] = imgCloud; }
 		if(irandom_range(0, 20) == 1){ ww.bmap[a, b] = imgStormCloud; }
 		if(irandom_range(0, 30) == 1){ ww.bmap[a, b] = imgEgg; }
 	}}
 	
-	for(var b=0; b<88; b++){
-		var a1 = irandom_range(0, 16);
-		var a2 = irandom_range(a1, clamp(a1 + 7, a1, 16));
+	for(var b=top; b<88; b++){
+		var a1 = irandom_range(0, 13);
+		var l = irandom_range(4, 10);
 		
-		for(var a=a1; a<a2; a++){
+		for(var a=a1; a<a1+l; a++){
+			if(a >= 17){ continue; }
 			ww.bgmap[a, b] = imgPlat;
 		}
 		
-		b += irandom_range(0, 3);
+		b += irandom_range(0, 1);
 	}
 	
 	//treasure
-	for(var a=0; a<17; a++){ for(var b=1; b<88; b++){
+	for(var a=0; a<17; a++){ for(var b=top; b<88; b++){
 		if(irandom_range(0, 50) == 1){ 
 			ww.bmap[a, b] = imgBox;
 			ww.bmap[a, b-1] = noone;
@@ -43,5 +44,9 @@ function worldGen(){
 	}}
 	
 	
-	for(var a=0; a<17; a++){ ww.bgmap[a, 86] = imgPlat; }
+	//ww.bmap[7, top-3] = imgBoxEmpty; ww.bmap[8, top-3] = imgBoxEmpty;
+	//ww.bmap[7, top-2] = imgBoxEmpty; ww.bmap[8, top-2] = imgBoxEmpty;
+	instance_create_depth(7*64, (top-3)*64, ww.depth-1, objSuperBox);
+	
+	//for(var a=0; a<17; a++){ ww.bgmap[a, 86] = imgPlat; }
 }

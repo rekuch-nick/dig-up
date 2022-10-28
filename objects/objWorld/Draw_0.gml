@@ -49,8 +49,10 @@ for(var b=b1; b<b2; b++){ for(var a=0; a<17; a++){
 			
 		}
 		
-		if(ww.bmap[a, b] == imgStormCloud && irandom_range(1, 10) == 1 && instance_number(objShot) < 1){
-			instance_create_depth(a*64+32, b*64+32, -6000, objShot);
+		if(abs(pc.ySpot - b) <= 6){
+			if(ww.bmap[a, b] == imgStormCloud && irandom_range(1, 10) == 1 && instance_number(objShot) < 1){
+				instance_create_depth(a*64+32, b*64+32, -6000, objShot);
+			}
 		}
 	}
 	
